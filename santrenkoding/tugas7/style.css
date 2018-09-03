@@ -1,0 +1,68 @@
+#bg-imgbody {
+    background-image: url("https://github.com/ibnubs/LearnCode/blob/master/santrenkoding/image/pandar.jpg?raw=true");
+    background-size: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    font-family: Raleway, Open Sans, Droid Sans, arial, sans-serif;
+    background-attachment: fixed; 
+}
+
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("https://github.com/ibnubs/LearnCode/blob/master/santrenkoding/image/pandar.jpg?raw=true");
+
+    /* Full height */
+    height: 100%; 
+    width: auto;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+   .navbarLogo{
+        border-radius: 10px;
+        border: 2px solid black;
+        line-height: 2rem;
+        width: 3.5rem;
+        text-align: center;
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+
+
+    .copyRight{
+        position: absolute;        
+        left: 47%;
+        bottom: 1px;
+        transform: translate(-50%, -50%);
+        color:whitesmoke;
+    }
+
+
+    .text-block {
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        background-color:#0f0f0fbd;
+        color: white;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 10px;
+        transform: scale(2.5);
+    }
+
+    #fontSize{
+        font-size: 10px;
+        margin-top:10px; 
+    }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
+</head>
+<body class="bg-img">
+
+<br>
+<div class="container">
+    <h3>TODO LIST</h3>
+    
+    <div class="input-group mb-3">
+        <input id="input-kegiatan" type="text" class="form-control" placeholder="What you wanna do" >
+        <div id="button-simpan" class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" ><i class="fas fa-plus-circle"></i></i></button>
+          
+        </div>
+      </div>
+
+      <ul id='list' class="list-group li-shadow">
+            <li class="list-group-item list-group-item-action">Lari</li>
+            <li class="list-group-item list-group-item-action">Baca Buku</li>
+            <li class="list-group-item list-group-item-action">Belajar</li>
+      </ul>
+
+</div>
+<br>
+
+<div class="container">
+        <h5 class="img-text"><i class="fas fa-camera-retro"></i>Pulau Pandar</h5>
+</div>
+
+
+<script>
+const inputKegiatanDOM = document.getElementById('input-kegiatan');
+const buttonSimpanDOM = document.getElementById('button-simpan');
+const listDOM = document.getElementById('list');
+
+const html = localStorage.getItem('html');
+listDOM.innerHTML = html;
+
+buttonSimpanDOM.addEventListener('click', function(){
+const kegiatan = inputKegiatanDOM.value
+listDOM.innerHTML = listDOM.innerHTML + '<li class="list-group-item list-group-item-action">' + kegiatan + '</li>';
+
+
+inputKegiatanDOM.value='';
+localStorage.setItem('html',listDOM.innerHTML);
+});
+
+
+</script>
+
+</body>
+</html>
