@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>0 Todo</h3>
+
+    <ul id="list">
+
+    </ul>
+
+
+    <input id='input-todo' placeholder />
+    <button id='add-button' type="submit">Add</button>
+
+
+    <script>
+        let todos = ['makan', 'minum'];
+        const listDOM = document.getElementById('list');
+        const inputDOM = document.getElementById('input-todo');
+        const addDOM = document.getElementById('add-button');
+
+        const data = JSON.parse(localStorage.getItem('todos'));
+        todos = data;
+
+        function render() {
+            let index = 0;
+            listDOM.innerHTML = '';
+            while(index < todos.length){
+                console.log(index)
+                listDOM.innerHTML += '<li><input type="checkbox">' + todos[index] + ' <button onclick="delete('+index+')" >Delete</button></li>'
+                index = index + 1
+            }
+        }
+        render();
+
+        addDOM.addEventListener('click', function () {
+            const todo = inputDOM.value;
+            todos.push(todo);
+            render();
+            localStorage.setItem('todos', JSON.stringify(todos));
+        })
+
+        function hapus(p){
+            todos.splice(p,1)
+            render();
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+    </script>
+
+</body>
+
+</html>
