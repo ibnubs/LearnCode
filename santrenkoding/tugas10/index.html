@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Permanent+Marker" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>TO-DO</title>
+</head>
+
+<body>
+
+   <div class="Jumbotron jumbotron jumbotron-fluid">
+        <div style='text-align:center' class="container">
+             <h2>TO-DO LIST</h2>
+        </div>
+   </div>
+
+   <div class=" container-fluid">
+        <div class="input-group mb-3">
+             <input id="input-todo" type="text" class="form-control" placeholder="What you wanna do">
+                <div class="input-group-append">
+                     <button id="add-button" class="btn btn-outline-secondary fas fa-plus-circle" type="submit"></button>
+                </div>
+        </div>
+        <ul class="list-group li-shadow" id="list"> </ul>
+   </div>
+
+   <nav class="navbar fixed-bottom navbar-light">
+        <a class="navbar-brand bottomright" href="#"><img style="max-width:70px; margin-top: -7px;" src="https://github.com/ibnubs/LearnCode/blob/master/santrenkoding/image/ibnubs.png?raw=true"alt=""></a>
+   </nav>
+        
+
+   <script>
+   var todos = [];
+   const listDOM = document.getElementById('list');
+   const inputDOM = document.getElementById('input-todo');
+   const addDOM = document.getElementById('add-button');
+   const data = JSON.parse(localStorage.getItem('todos'));
+        if (data != null){
+            todos = data;
+        }
+                
+        function render() {
+          let index = 0;
+          listDOM.innerHTML = "";
+          while (index < todos.length) {
+             if (todos[index].status == true){
+                listDOM.innerHTML += '<li class="list-group-item list-group-item-action"><input  checked onchange="changeStatus('+index+')" type="checkbox"> <label class="strikethrough">' +todos[index].name + ' </label><button onclick="hapus(' + index + ')" type="button" class="btn btn-danger float-right far fa-trash-alt"></button></li>'
+             } else{
+                listDOM.innerHTML += '<li class="list-group-item list-group-item-action"><input onchange="changeStatus('+index+')" type="checkbox"> <label class="strikethrough">' +todos[index].name + ' </label><button onclick="hapus(' + index + ')" type="button" class="btn btn-danger float-right far fa-trash-alt"></button></li>'
+             }
+        
+
+                index = index + 1;
+          }
+        }
+        render();
+
+        addDOM.addEventListener('click', function () {
+          const todo = {
+                name : inputDOM.value,
+                status : false
+          };
+          todos.push(todo);
+          render();
+          inputDOM.value = '';
+          localStorage.setItem('todos', JSON.stringify(todos));
+        })
+
+          function hapus(index) {
+             todos.splice(index, 1);
+             render();
+             localStorage.setItem('todos', JSON.stringify(todos));
+          }
+
+          function changeStatus(index){
+             console.log(index);
+             if(todos[index].status == true){
+                     todos[index].status = false
+             }  else{
+                todos[index].status = true
+             }  
+             render();
+             localStorage.setItem('todos', JSON.stringify(todos));    
+          }
+   </script>
+
+</body>
+
+</html>

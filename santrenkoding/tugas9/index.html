@@ -41,14 +41,18 @@
         
 
         <script>
-                var todos = ['Bagun Pagi'];
+                var todos = [];
                 const listDOM = document.getElementById('list');
                 const inputDOM = document.getElementById('input-todo');
                 const addDOM = document.getElementById('add-button');
 
                 const data = JSON.parse(localStorage.getItem('todos'));
-                console.log(data);
-                todos = data;
+                // console.log(data);
+                if (data != null){
+                        todos = data;
+                }
+                //todos = data;
+
 
                 function render() {
                         let index = 0;
